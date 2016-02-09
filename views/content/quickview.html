@@ -1,0 +1,21 @@
+<div class="quickview">
+    <div class="container">
+        <div class="pop text-center">
+            <div class="quick-img">
+                <img ng-src="{{showpop.img}}" noloading="true" alt="" class="img-responsive">
+            </div>
+            <div class="pro-descp">
+              <div class="quick-info clearfix">
+                <div class=" text-center">
+                  <h4 class="category-color name">{{showpop.name}}</h4>
+                  <span class="code">{{showpop.code}}</span>
+                </div>
+                <div class="">
+                    <h5 class="size">Size :{{showpop.size}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="close" ng-click="closeThisDialog('value');"><i class="fa fa-times cross"></i></div>
+        </div>
+    </div>
+</div>

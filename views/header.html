@@ -1,0 +1,58 @@
+<header ng-controller="headerctrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 ">
+        <a href="#/home" class="navbar-brand"><img src="img/logo.png" alt="Euro" class="img-responsive"></a>
+      </div>
+      <div class="col-md-7 col-sm-7  nomgpd">
+        <nav>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#euro">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="euro" class="collapse navbar-collapse">
+            <div class="template menu" ng-include="template.menu"></div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-12 nomgpd">
+          <div class="lh40">
+            <ul class="head-icon mgtb text-center">
+              <li>
+                <a href="" class="fb" target="_blank">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="" class="twi" target="_blank">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="" class="youtube" target="_blank">
+                  <i class="fa fa-youtube"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!--   <div class="search-box {{getclass}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-10">
+                    <form action="">
+                        <input type="search" class="form-control" placeholder="Type your search and hit enter">
+                    </form>
+                </div>
+                <div class="col-md-2 col-xs-2">
+                    <a href="" ng-click="open('down-yes');" class="close"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</header>
