@@ -51,7 +51,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getHomePics: function (callback) {
-      $http.get(adminurl+'getHomePageImage').success(callback);
+      $http.get(adminurl+'getHomePageImage').success(callback); 
     //   $http({
     //     url: adminurl + 'getHomePageImage',
     //     method: 'GET',
@@ -77,7 +77,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getPopularPdts:function (callback) {
-      $http.get(adminurl+'getPopularProduct').success(callback);
+      $http.get(adminurl+'getPopularProduct').success(callback);   
     },
 
     getCategoryImages:function (id, callback) {

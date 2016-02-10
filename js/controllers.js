@@ -6,12 +6,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Home");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-  NavigationService.getHomePics(function(data){
-    $scope.homeimg=data;
-    console.log($scope.homeimg);
-  });
-
-
   $scope.products = false;
 
   NavigationService.getHomePics(function (data) {
@@ -22,7 +16,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   NavigationService.getPopularPdts(function (data) {
     $scope.brandlist = data;
     console.log($scope.brandlist);
-  });
+  })
 
   // $scope.subscribe = function (email) {
   //   return email;
@@ -39,8 +33,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('nav service:', data);
         $scope.products = data;
       }
-    });
-  };
+    })
+  }
 
   $scope.subscribeEmail = "";
   $scope.subscribe = function (email) {
@@ -48,9 +42,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.subscribe(email, function (data) {
       // console.log(data);
       console.log(email);
-    });
+    })
     // $scope.subscribeEmail = data;
-  };
+  }
 
   // $scope.showopup = {};
   $scope.pro = function(open) {
