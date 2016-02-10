@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pro">
-                    <img src="img/adhesive-banner.jpg" alt="Products" class="img-responsive">
+                    <img src="{{homeImage.image1}}" alt="Products" class="img-responsive">
                 </div>
             </div>
             <div class="col-md-6">
@@ -30,8 +30,8 @@
                     <p class="italic font-italic">Join for our latest update</p>
                     <form action="" class="form-inline">
                         <div class="nomgpd form-group">
-                            <input type="text" class="form-control nofocus noborder mail" placeholder="Your email here..">
-                            <button type="submit" class="subscribe nofocus">subscribe</button>
+                            <input type="text" class="form-control nofocus noborder mail" placeholder="Your email here.." ng-model="subscribeEmail">
+                            <button type="submit" ng-click="subscribe(subscribeEmail)" class="subscribe nofocus">subscribe</button>
                     </form>
                     </div>
                 </div>
@@ -44,12 +44,12 @@
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="pro">
-                    <img src="img/1.jpg" alt="Products" class="img-responsive">
+                    <img src="{{homeImage.image2}}" alt="Products" class="img-responsive">
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="pro">
-                    <img src="img/2.jpg" alt="Products" class="img-responsive">
+                    <img src="{{homeImage.image3}}" alt="Products" class="img-responsive">
                 </div>
             </div>
         </div>
@@ -159,21 +159,21 @@
     <div class="brand-list" ng-click="proclick($index)">
         <div class="list-brand">
             <div class="brand-img">
-                <img ng-src="{{brand.img}}" alt="Brand" class="img-responsive">
+                <img ng-src="{{brand.frontImage}}" alt="Brand" class="img-responsive">
             </div>
         </div>
         <div class="back-img">
-            <img ng-src="{{brand.back_img}}" alt="Brand" class="img-responsive">
+            <img ng-src="{{brand.backImage}}" alt="Brand" class="img-responsive" ng-click="getCategory(brand.id)">
         </div>
     </div>
     <div class="click-pro" ng-show="brand.show">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3" ng-repeat="proho in brand.products" ng-click="open(proho)">
+                <div class="col-md-3" ng-repeat="proho in products" ng-click="open(proho)">
                     <a href="">
                         <div class="products">
                             <div class="pro-img">
-                                <img ng-src="{{proho.img}}" alt="Products" class="img-responsive">
+                                <img ng-src="{{proho}}" alt="Products" class="img-responsive">
                             </div>
                             <div class="pro-hov text-center text-uppercase">
                                 <div class="pro-detail">
