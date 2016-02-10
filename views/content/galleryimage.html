@@ -1,12 +1,12 @@
 <div class="quickview galimg" ng-controller="GalleryCtrl">
     <div class="container">
         <div class="pop">
-            <!--                
+            <!--
                                           <img src="img/home-slide/slider1.png" alt="" class="img-responsive">-->
             <div class="rel">
-                <flex-slider class="carousel" flex-slide="s in slide" animation="slide" animation-loop="true">
+                <flex-slider class="carousel" flex-slide="s in gallery track by $index" animation="slide" animation-loop="true">
                     <li>
-                        <img ng-src="{{s}}" alt="Gallery Images" class="img-responsive">
+                        <img ng-src="{{s.galleryImages}}" alt="Gallery Images" class="img-responsive">
                     </li>
                 </flex-slider>
             </div>

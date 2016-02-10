@@ -1,6 +1,7 @@
+var adminurl = "http://wohlig.io:81/callApi/euro/";
 var navigationservice = angular.module('navigationservice', [])
 
-.factory('NavigationService', function() {
+.factory('NavigationService', function($http) {
   var navigation = [{
     name: "Home",
     classis: "active",
@@ -19,6 +20,36 @@ var navigationservice = angular.module('navigationservice', [])
   }];
 
   return {
+    getSlider: function(callback) {
+      $http.get(adminurl + 'getSlider').success(callback);
+    },
+    getExclusiveProduct: function(callback) {
+      $http.get(adminurl + 'getExclusivePdt').success(callback);
+    },
+    getGallery: function(callback) {
+      $http.get(adminurl + 'getGalleryImages').success(callback);
+    },
+getSlide: function(callback) {
+  $http.get(adminurl + 'getGalleryImages').success(callback);
+},
+eachPopularProduct: function(id, callback) {
+  $http.get(adminurl + 'getEachPopularProduct/'+ id).success(callback);
+},
+getHomePics:function(callback){
+  $http({
+    url:adminurl+'getHomePageImage',
+    method:'GET',
+    withCredentials:true,
+    data:{
+    "image1":"img/adhesive-banner.jpg",
+    "image2":"img/1.jpg",
+    "image3":"img/2.jpg"
+
+    }
+  }).success(callback);
+
+},
+
     getnav: function() {
       return navigation;
     },
@@ -33,5 +64,5 @@ var navigationservice = angular.module('navigationservice', [])
       return menuname;
     },
 
-  }
+  };
 });

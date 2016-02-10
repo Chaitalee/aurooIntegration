@@ -6,12 +6,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Home");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  NavigationService.getHomePics(function(data){
+    $scope.homeimg=data;
+    console.log($scope.homeimg);
+  });
+
+
   $scope.products = false;
 
   // $scope.showopup = {};
   $scope.pro = function(open) {
     $scope.products = open;
-  }
+  };
 
   $scope.open = function(data) {
     $scope.showpop = data;
@@ -19,24 +25,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       template: 'views/content/quickview.html',
       scope: $scope,
       controller: 'HomeCtrl'
+
     });
-  }
+
+  };
 
   $scope.popme = function() {
       ngDialog.open({
         template: 'views/content/popup.html',
         scope: $scope
       });
-  }
+  };
 
   $scope.popme();
 
-  $scope.slides = [
-    'img/home-slide/slider1.jpg',
-    'img/home-slide/slider2.jpg',
-    'img/home-slide/slider3.jpg',
-    'img/home-slide/slider4.jpg'
-  ];
+    NavigationService.getSlider(function(data) {
+      $scope.slides = data;
+      console.log($scope.slides);
+    });
+
+        NavigationService.getExclusiveProduct(function(data) {
+          $scope.exclusiveProduct = data;
+          console.log($scope.exclusiveProduct);
+        });
+
 
   $scope.products = [{
     img: "img/products/8.jpg",
@@ -216,12 +228,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Galleryimage");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-  $scope.slide = [
-    'img/products/1.jpg',
-    'img/products/2.jpg',
-    'img/products/3.jpg',
-    'img/products/4.jpg'
-  ];
+  $scope.slide = [];
 })
 
 .controller('ProductsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -278,60 +285,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Gallery");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-  $scope.gallery = [{
-    img: "img/gallery/decolite.png"
-  }, {
-    img: "img/gallery/lucento.png"
-  }, {
-    img: "img/gallery/mikano.png"
-  }, {
-    img: "img/gallery/vereno.png"
-  }, {
-    img: "img/gallery/acrylam.png"
-  }, {
-    img: "img/gallery/egger.png"
-  }, {
-    img: "img/gallery/flos.png"
-  }, {
-    img: "img/gallery/decoart.png"
-  }, {
-    img: "img/gallery/acrylyte.png"
-  }, {
-    img: "img/gallery/corriano.png"
-  }, {
-    img: "img/gallery/stylite.png"
-  }, {
-    img: "img/gallery/decopanel.png"
-  }, {
-    img: "img/gallery/decoris.png"
-  }, {
-    img: "img/gallery/forescolor.png"
-  }, {
-    img: "img/gallery/fashionwall.png"
-  }, {
-    img: "img/gallery/emporio.png"
-  }, {
-    img: "img/gallery/matrixwall.png"
-  }, {
-    img: "img/gallery/solido.png"
-  }, {
-    img: "img/gallery/d3wall.png"
-  }, {
-    img: "img/gallery/europratik.png"
-  }];
-  $scope.slide = [
-    'img/mikano/1.jpg',
-    'img/mikano/2.jpg',
-    'img/mikano/3.jpg',
-    'img/mikano/4.jpg'
-  ];
+$scope.slide = [];
+  NavigationService.getGallery(function(data) {
+    $scope.gallery = data;
+    console.log($scope.gallery);
+  });
+
+
   $scope.open = function() {
     ngDialog.open({
       template: 'views/content/galleryimage.html',
       scope: $scope,
       controller: 'GalleryCtrl'
     });
-  }
+  };
 })
 
 .controller('BrandsCtrl', function($scope, TemplateService, NavigationService, $timeout) {

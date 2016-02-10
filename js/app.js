@@ -65,10 +65,23 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         url: "/galleryimage",
         templateUrl: "views/template.html",
         controller: 'GalleryimageCtrl'
-    })
+    });
 
     $urlRouterProvider.otherwise("/home");
 
+});
+
+
+
+firstapp.filter('serverimage', function() {
+  return function(input) {
+    if (input) {
+      return input;
+      // return  "http://wohlig.co.in/newfynx/uploads/" + input;
+    } else {
+      return "img/logo.png";
+    }
+  };
 });
 
 

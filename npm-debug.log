@@ -1,0 +1,138 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'gulp-install' ]
+2 info using npm@1.4.21
+3 info using node@v0.10.25
+4 warn package.json gulp-minify-css@1.2.3 No repository field.
+5 warn package.json gulp-minify-html@1.0.5 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'gulp-install', null ]
+8 verbose cache add name=undefined spec="gulp-install" args=["gulp-install",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'gulp-install',
+9 verbose parsed url   path: 'gulp-install',
+9 verbose parsed url   href: 'gulp-install' }
+10 silly lockFile cbb2bd0f-gulp-install gulp-install
+11 verbose lock gulp-install /home/pooja/.npm/cbb2bd0f-gulp-install.lock
+12 silly lockFile cbb2bd0f-gulp-install gulp-install
+13 silly lockFile cbb2bd0f-gulp-install gulp-install
+14 verbose addNamed [ 'gulp-install', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile 014e2617-gulp-install gulp-install@
+17 verbose lock gulp-install@ /home/pooja/.npm/014e2617-gulp-install.lock
+18 silly addNameRange { name: 'gulp-install', range: '*', hasData: false }
+19 verbose request where is /gulp-install
+20 verbose request registry https://registry.npmjs.org/
+21 verbose request id 3144497d1c3ee9b2
+22 verbose url raw /gulp-install
+23 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-install' ]
+24 verbose url resolved https://registry.npmjs.org/gulp-install
+25 verbose request where is https://registry.npmjs.org/gulp-install
+26 info trying registry request attempt 1 at 15:47:37
+27 verbose etag "901J6JRM42HIU1DW9N1Q9WKAR"
+28 http GET https://registry.npmjs.org/gulp-install
+29 http 304 https://registry.npmjs.org/gulp-install
+30 silly registry.get cb [ 304,
+30 silly registry.get   { date: 'Tue, 09 Feb 2016 10:17:38 GMT',
+30 silly registry.get     via: '1.1 varnish',
+30 silly registry.get     'cache-control': 'max-age=300',
+30 silly registry.get     etag: '"901J6JRM42HIU1DW9N1Q9WKAR"',
+30 silly registry.get     age: '0',
+30 silly registry.get     connection: 'keep-alive',
+30 silly registry.get     'x-served-by': 'cache-sin6923-SIN',
+30 silly registry.get     'x-cache': 'HIT',
+30 silly registry.get     'x-cache-hits': '1',
+30 silly registry.get     'x-timer': 'S1455013058.146231,VS0,VE244',
+30 silly registry.get     vary: 'Accept' } ]
+31 verbose etag https://registry.npmjs.org/gulp-install from cache
+32 silly addNameRange number 2 { name: 'gulp-install', range: '*', hasData: true }
+33 silly addNameRange versions [ 'gulp-install',
+33 silly addNameRange   [ '0.1.1',
+33 silly addNameRange     '0.1.3',
+33 silly addNameRange     '0.1.4',
+33 silly addNameRange     '0.1.5',
+33 silly addNameRange     '0.1.6',
+33 silly addNameRange     '0.1.7',
+33 silly addNameRange     '0.1.8',
+33 silly addNameRange     '0.2.0',
+33 silly addNameRange     '0.3.0',
+33 silly addNameRange     '0.4.0',
+33 silly addNameRange     '0.5.0',
+33 silly addNameRange     '0.6.0' ] ]
+34 verbose addNamed [ 'gulp-install', '0.6.0' ]
+35 verbose addNamed [ '0.6.0', '0.6.0' ]
+36 silly lockFile 99e1c2f6-gulp-install-0-6-0 gulp-install@0.6.0
+37 verbose lock gulp-install@0.6.0 /home/pooja/.npm/99e1c2f6-gulp-install-0-6-0.lock
+38 silly lockFile 99e1c2f6-gulp-install-0-6-0 gulp-install@0.6.0
+39 silly lockFile 99e1c2f6-gulp-install-0-6-0 gulp-install@0.6.0
+40 silly lockFile 014e2617-gulp-install gulp-install@
+41 silly lockFile 014e2617-gulp-install gulp-install@
+42 silly resolved [ { name: 'gulp-install',
+42 silly resolved     version: '0.6.0',
+42 silly resolved     description: 'Automatically install npm, bower, tsd, and pip packages/dependencies if the relative configurations are found in the gulp file stream respectively',
+42 silly resolved     main: 'index.js',
+42 silly resolved     scripts: { test: 'NODE_ENV=test mocha -R spec' },
+42 silly resolved     repository:
+42 silly resolved      { type: 'git',
+42 silly resolved        url: 'git://github.com/slushjs/gulp-install.git' },
+42 silly resolved     keywords: [ 'gulpplugin', 'bower', 'npm', 'install' ],
+42 silly resolved     author: { name: 'Joakim Carlstein', email: 'joakim@klei.se' },
+42 silly resolved     license: 'MIT',
+42 silly resolved     bugs: { url: 'https://github.com/slushjs/gulp-install/issues' },
+42 silly resolved     homepage: 'https://github.com/slushjs/gulp-install',
+42 silly resolved     dependencies: { 'gulp-util': '^3.0.4', through2: '^2.0.0', which: '^1.0.9' },
+42 silly resolved     devDependencies: { chai: '^3.2.0', mocha: '^2.2.1' },
+42 silly resolved     gitHead: '500cf5b1190294be991c16acca12f51f9692e09b',
+42 silly resolved     _id: 'gulp-install@0.6.0',
+42 silly resolved     _shasum: '11541f11fc5f7a19e18cb3ef8eadb9e64b8e54aa',
+42 silly resolved     _from: 'gulp-install@',
+42 silly resolved     _npmVersion: '3.3.3',
+42 silly resolved     _nodeVersion: '4.0.0',
+42 silly resolved     _npmUser: { name: 'joakimbeng', email: 'joakim@klei.se' },
+42 silly resolved     dist:
+42 silly resolved      { shasum: '11541f11fc5f7a19e18cb3ef8eadb9e64b8e54aa',
+42 silly resolved        tarball: 'http://registry.npmjs.org/gulp-install/-/gulp-install-0.6.0.tgz' },
+42 silly resolved     maintainers: [ [Object] ],
+42 silly resolved     directories: {},
+42 silly resolved     _resolved: 'https://registry.npmjs.org/gulp-install/-/gulp-install-0.6.0.tgz',
+42 silly resolved     readme: 'ERROR: No README data found!' } ]
+43 info install gulp-install@0.6.0 into /home/pooja/auroo
+44 info installOne gulp-install@0.6.0
+45 verbose node_modules/gulp-install unbuild
+46 info preuninstall gulp-install@0.6.0
+47 info uninstall gulp-install@0.6.0
+48 verbose true,/home/pooja/auroo/node_modules,/home/pooja/auroo/node_modules unbuild gulp-install@0.6.0
+49 info postuninstall gulp-install@0.6.0
+50 verbose node_modules/gulp-install unbuild
+51 error error rolling back Error: EACCES, unlink '/home/pooja/auroo/node_modules/gulp-install/node_modules/.bin/which'
+51 error error rolling back  gulp-install@0.6.0 { [Error: EACCES, unlink '/home/pooja/auroo/node_modules/gulp-install/node_modules/.bin/which']
+51 error error rolling back   errno: 3,
+51 error error rolling back   code: 'EACCES',
+51 error error rolling back   path: '/home/pooja/auroo/node_modules/gulp-install/node_modules/.bin/which' }
+52 error Error: EACCES, unlink '/home/pooja/auroo/node_modules/gulp-install/node_modules/.bin/which'
+52 error  { [Error: EACCES, unlink '/home/pooja/auroo/node_modules/gulp-install/node_modules/.bin/which']
+52 error   errno: 3,
+52 error   code: 'EACCES',
+52 error   path: '/home/pooja/auroo/node_modules/gulp-install/node_modules/.bin/which' }
+53 error Please try running this command again as root/Administrator.
+54 error System Linux 4.2.0-22-generic
+55 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "--save" "gulp-install"
+56 error cwd /home/pooja/auroo
+57 error node -v v0.10.25
+58 error npm -v 1.4.21
+59 error path /home/pooja/auroo/node_modules/gulp-install/node_modules/.bin/which
+60 error code EACCES
+61 error errno 3
+62 error stack Error: EACCES, unlink '/home/pooja/auroo/node_modules/gulp-install/node_modules/.bin/which'
+63 verbose exit [ 3, true ]

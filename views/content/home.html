@@ -1,7 +1,7 @@
 <div class="slider">
-    <flex-slider class="carousel" flex-slide="s in slides" animation="slide" animation-loop="true">
+    <flex-slider class="carousel" flex-slide="s in slides track by $index" animation="slide" animation-loop="true">
         <li>
-            <img ng-src="{{s}}">
+            <img ng-src="{{s.image|serverimage}}">
             <!--
             <div class="slider-home">
                 <div class="slide-tagline text-uppercase text-center">
@@ -92,12 +92,12 @@
             -->
                 <div class="col-md-6 col-sm-6">
                     <div class="pro">
-                        <img src="img/mikano-banner.jpg" alt="Products" class="img-responsive">
+                        <img src="{{exclusiveProduct.image1}}" alt="Products" class="img-responsive">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="pro">
-                        <img src="img/decoart-banner.jpg" alt="Products" class="img-responsive">
+                        <img src="{{exclusiveProduct.image2}}" alt="Products" class="img-responsive">
                     </div>
                 </div>
             </div>
