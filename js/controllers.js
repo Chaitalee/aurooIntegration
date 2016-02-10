@@ -14,6 +14,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.products = false;
 
+  NavigationService.getHomePics(function (data) {
+      $scope.homeImage = data;
+      console.log($scope.homeImage);
+    });
+
+  NavigationService.getPopularPdts(function (data) {
+    $scope.brandlist = data;
+    console.log($scope.brandlist);
+  });
+
+  // $scope.subscribe = function (email) {
+  //   return email;
+  // }
+
+  // $scope.input = $scope.subscribe(email) {
+  //   return email;
+  // };
+  $scope.getCategory = function (brandId) {
+    console.log('Brand Id:', brandId);
+    NavigationService.getCategoryImages(brandId, function (data) {
+      if(data) {
+        console.log('nav service:', brandId);
+        console.log('nav service:', data);
+        $scope.products = data;
+      }
+    });
+  };
+
+  $scope.subscribeEmail = "";
+  $scope.subscribe = function (email) {
+    console.log('Email subscribe: ', email);
+    NavigationService.subscribe(email, function (data) {
+      // console.log(data);
+      console.log(email);
+    });
+    // $scope.subscribeEmail = data;
+  };
+
   // $scope.showopup = {};
   $scope.pro = function(open) {
     $scope.products = open;
@@ -136,7 +174,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     if (index == 1) {
       $scope.brandlist[index].show = !$scope.brandlist[index].show;
     }
-  }
+  };
 
 })
 

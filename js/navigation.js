@@ -29,26 +29,12 @@ var navigationservice = angular.module('navigationservice', [])
     getGallery: function(callback) {
       $http.get(adminurl + 'getGalleryImages').success(callback);
     },
-getSlide: function(callback) {
-  $http.get(adminurl + 'getGalleryImages').success(callback);
-},
-eachPopularProduct: function(id, callback) {
-  $http.get(adminurl + 'getEachPopularProduct/'+ id).success(callback);
-},
-getHomePics:function(callback){
-  $http({
-    url:adminurl+'getHomePageImage',
-    method:'GET',
-    withCredentials:true,
-    data:{
-    "image1":"img/adhesive-banner.jpg",
-    "image2":"img/1.jpg",
-    "image3":"img/2.jpg"
-
-    }
-  }).success(callback);
-
-},
+    getSlide: function(callback) {
+      $http.get(adminurl + 'getGalleryImages').success(callback);
+    },
+    eachPopularProduct: function(id, callback) {
+      $http.get(adminurl + 'getEachPopularProduct/'+ id).success(callback);
+    },
 
     getnav: function() {
       return navigation;
@@ -64,5 +50,38 @@ getHomePics:function(callback){
       return menuname;
     },
 
+    getHomePics: function (callback) {
+      $http.get(adminurl+'getHomePageImage').success(callback);
+    //   $http({
+    //     url: adminurl + 'getHomePageImage',
+    //     method: 'GET',
+    //     withCredentials: true,
+    //     data: {
+    //       "image1":"img/adhesive-banner.jpg",
+    //       "image2":"img/1.jpg",
+    //       "image3":"img/2.jpg"
+    //     }
+    //   }).success(callback);
+    },
+
+    subscribe: function (mail, callback) {
+      console.log(mail);
+      $http({
+        url: adminurl + 'getSubscribers',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "email": mail
+        }
+      }).success(callback);
+    },
+
+    getPopularPdts:function (callback) {
+      $http.get(adminurl+'getPopularProduct').success(callback);
+    },
+
+    getCategoryImages:function (id, callback) {
+      $http.get(adminurl+'getEachPopularProduct/'+id).success(callback);
+    }
   };
 });
