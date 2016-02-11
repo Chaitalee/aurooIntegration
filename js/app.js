@@ -25,7 +25,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         controller: 'ContactUsCtrl'
     })
     .state('category', {
-        url: "/category",
+        url: "/category/:id",
         templateUrl: "views/template.html",
         controller: 'CategoryCtrl'
     })

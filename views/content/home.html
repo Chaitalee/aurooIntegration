@@ -170,31 +170,29 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3" ng-repeat="proho in products" ng-click="open(proho)">
-                    <a href="">
-                        <div class="products">
-                            <div class="pro-img">
-                                <img ng-src="{{proho}}" alt="Products" class="img-responsive">
-                            </div>
-                            <div class="pro-hov text-center text-uppercase">
-                                <div class="pro-detail">
-                                  <a href="" class="eye"><i class="fa fa-eye"></i></a>
-                                    <!-- <p>{{proho.code}}</p> -->
-                                    <!-- <p>{{proho.name}}</p> -->
-                                    <!-- <p>{{proho.size}}</p> -->
-                                    <!--
-                                    <p>Rs: {{proho.price}}</p>
-                                -->
-                                </div>
-                                <!-- <div class="view">
-                                    <a href="" ng-click="open(proho);" class="eye"><i class="fa fa-eye"></i></a>
-                                </div> -->
-                            </div>
+                    <div class="products">
+                        <div class="pro-img">
+                            <img ng-src="{{proho.image}}" alt="Products" class="img-responsive">
                         </div>
-                    </a>
+                        <div class="pro-hov text-center text-uppercase">
+                            <div class="pro-detail">
+                              <a href="" class="eye"><i class="fa fa-eye"></i></a>
+                                <!-- <p>{{proho.code}}</p> -->
+                                <!-- <p>{{proho.name}}</p> -->
+                                <!-- <p>{{proho.size}}</p> -->
+                                <!--
+                                <p>Rs: {{proho.price}}</p>
+                            -->
+                            </div>
+                            <!-- <div class="view">
+                                <a href="" ng-click="open(proho);" class="eye"><i class="fa fa-eye"></i></a>
+                            </div> -->
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="range">
-                <a href="#/category" class="">full range</a>
+                <a href="#/category/{{brand.id}}" class="">{{brand.categoryId}}full range</a>
             </div>
         </div>
     </div>
