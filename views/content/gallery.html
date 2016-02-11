@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="gal in gallery">
             <div class="title">
-                <a href="" ng-click="open();" ><img ng-src="{{gal.categoryImg}}" alt="" class="img-responsive" ></a>
+                <a href="" ng-click="open(gal.id);" ><img ng-src="{{gal.categoryImg}}" alt="" class="img-responsive" ></a>
             </div>
         </div>
     </div>

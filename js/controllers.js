@@ -177,6 +177,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Contact-Us");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.submit=function(mail){
+    NavigationService.contactSubmit(mail,function(data){
+      $scope.contact=data;
+      console.log($scope.contact);
+    });
+  };
 })
 
 
@@ -185,67 +191,71 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Download");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-  $scope.download = [{
-    img: "img/gallery/decolite.png",
-    pdf: "img/pdf/decolite.pdf"
-  }, {
-    img: "img/gallery/lucento.png",
-    pdf: "img/pdf/lucento.pdf"
-  }, {
-    img: "img/gallery/mikano.png",
-    pdf: "img/pdf/mikano.pdf"
-  }, {
-    img: "img/gallery/vereno.png",
-    pdf: "img/pdf/vereno.pdf"
-  }, {
-    img: "img/gallery/acrylam.png",
-    pdf: "img/pdf/acrylam.pdf"
-  }, {
-    img: "img/gallery/egger.png",
-    pdf: "img/pdf/egger.pdf"
-  }, {
-    img: "img/gallery/flos.png",
-    pdf: "img/pdf/flos.pdf"
-  }, {
-    img: "img/gallery/decoart.png",
-    pdf: "img/pdf/decoart.pdf"
-  }, {
-    img: "img/gallery/acrylyte.png",
-    pdf: "img/pdf/acrylyte.pdf"
-  }, {
-    img: "img/gallery/corriano.png",
-    pdf: "img/pdf/corriano.pdf"
-  }, {
-    img: "img/gallery/stylite.png",
-    pdf: "img/pdf/stylite.pdf"
-  }, {
-    img: "img/gallery/decopanel.png",
-    pdf: "img/pdf/decopanel.pdf"
-  }, {
-    img: "img/gallery/decoris.png",
-    pdf: "img/pdf/decoris.pdf"
-  }, {
-    img: "img/gallery/forescolor.png",
-    pdf: "img/pdf/forescolor.pdf"
-  }, {
-    img: "img/gallery/fashionwall.png",
-    pdf: "img/pdf/fashionwall.pdf"
-  }, {
-    img: "img/gallery/emporio.png",
-    pdf: "img/pdf/emporio.pdf"
-  }, {
-    img: "img/gallery/matrixwall.png",
-    pdf: "img/pdf/matrixwall.pdf"
-  }, {
-    img: "img/gallery/solido.png",
-    pdf: "img/pdf/solido.pdf"
-  }, {
-    img: "img/gallery/d3wall.png",
-    pdf: "img/pdf/d3wall.pdf"
-  }, {
-    img: "img/gallery/europratik.png",
-    pdf: "img/pdf/europratik.pdf"
-  }];
+  NavigationService.getGallery(function(data) {
+    $scope.download = data;
+    console.log($scope.download);
+  });
+  // $scope.download = [{
+  //   img: "img/gallery/decolite.png",
+  //   pdf: "img/pdf/decolite.pdf"
+  // }, {
+  //   img: "img/gallery/lucento.png",
+  //   pdf: "img/pdf/lucento.pdf"
+  // }, {
+  //   img: "img/gallery/mikano.png",
+  //   pdf: "img/pdf/mikano.pdf"
+  // }, {
+  //   img: "img/gallery/vereno.png",
+  //   pdf: "img/pdf/vereno.pdf"
+  // }, {
+  //   img: "img/gallery/acrylam.png",
+  //   pdf: "img/pdf/acrylam.pdf"
+  // }, {
+  //   img: "img/gallery/egger.png",
+  //   pdf: "img/pdf/egger.pdf"
+  // }, {
+  //   img: "img/gallery/flos.png",
+  //   pdf: "img/pdf/flos.pdf"
+  // }, {
+  //   img: "img/gallery/decoart.png",
+  //   pdf: "img/pdf/decoart.pdf"
+  // }, {
+  //   img: "img/gallery/acrylyte.png",
+  //   pdf: "img/pdf/acrylyte.pdf"
+  // }, {
+  //   img: "img/gallery/corriano.png",
+  //   pdf: "img/pdf/corriano.pdf"
+  // }, {
+  //   img: "img/gallery/stylite.png",
+  //   pdf: "img/pdf/stylite.pdf"
+  // }, {
+  //   img: "img/gallery/decopanel.png",
+  //   pdf: "img/pdf/decopanel.pdf"
+  // }, {
+  //   img: "img/gallery/decoris.png",
+  //   pdf: "img/pdf/decoris.pdf"
+  // }, {
+  //   img: "img/gallery/forescolor.png",
+  //   pdf: "img/pdf/forescolor.pdf"
+  // }, {
+  //   img: "img/gallery/fashionwall.png",
+  //   pdf: "img/pdf/fashionwall.pdf"
+  // }, {
+  //   img: "img/gallery/emporio.png",
+  //   pdf: "img/pdf/emporio.pdf"
+  // }, {
+  //   img: "img/gallery/matrixwall.png",
+  //   pdf: "img/pdf/matrixwall.pdf"
+  // }, {
+  //   img: "img/gallery/solido.png",
+  //   pdf: "img/pdf/solido.pdf"
+  // }, {
+  //   img: "img/gallery/d3wall.png",
+  //   pdf: "img/pdf/d3wall.pdf"
+  // }, {
+  //   img: "img/gallery/europratik.png",
+  //   pdf: "img/pdf/europratik.pdf"
+  // }];
 })
 
 .controller('QuickviewCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -317,14 +327,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Gallery");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-$scope.slide = [];
+  $scope.slide = [];
   NavigationService.getGallery(function(data) {
     $scope.gallery = data;
     console.log($scope.gallery);
   });
 
 
-  $scope.open = function() {
+  $scope.open = function(id) {
+    NavigationService.getEachProductGallery(id, function(data) {
+      $scope.eachprogallery = data;
+      console.log($scope.eachprogallery);
+    });
     ngDialog.open({
       template: 'views/content/galleryimage.html',
       scope: $scope,

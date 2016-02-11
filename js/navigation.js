@@ -35,6 +35,21 @@ var navigationservice = angular.module('navigationservice', [])
     eachPopularProduct: function(id, callback) {
       $http.get(adminurl + 'getEachPopularProduct/'+ id).success(callback);
     },
+    getEachProductGallery: function(id,callback) {
+      console.log(id);
+      $http.get(adminurl + 'getEachProductGallery/'+id).success(callback);
+    },
+    contactSubmit:function(mail,callback){
+
+      $http({
+        url: adminurl + 'contactUs',
+        method: 'POST',
+        withCredentials: true,
+        data: {
+          "email": mail
+        }
+      }).success(callback);
+    },
 
     getnav: function() {
       return navigation;
@@ -51,7 +66,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getHomePics: function (callback) {
-      $http.get(adminurl+'getHomePageImage').success(callback); 
+      $http.get(adminurl+'getHomePageImage').success(callback);
     //   $http({
     //     url: adminurl + 'getHomePageImage',
     //     method: 'GET',
@@ -77,7 +92,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getPopularPdts:function (callback) {
-      $http.get(adminurl+'getPopularProduct').success(callback);   
+      $http.get(adminurl+'getPopularProduct').success(callback);
     },
 
     getCategoryImages:function (id, callback) {
