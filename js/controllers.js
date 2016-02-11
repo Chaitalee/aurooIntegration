@@ -273,53 +273,58 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.slide = [];
 })
 
-.controller('ProductsCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('ProductsCtrl', function($scope, 
+  TemplateService, NavigationService, $timeout) {
   $scope.template = TemplateService.changecontent("products");
   $scope.menutitle = NavigationService.makeactive("Products");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
-  $scope.catmain = [{
-    img: "img/gallery/decolite.png"
-  }, {
-    img: "img/gallery/lucento.png"
-  }, {
-    img: "img/gallery/mikano.png"
-  }, {
-    img: "img/gallery/vereno.png"
-  }, {
-    img: "img/gallery/acrylam.png"
-  }, {
-    img: "img/gallery/egger.png"
-  }, {
-    img: "img/gallery/flos.png"
-  }, {
-    img: "img/gallery/decoart.png"
-  }, {
-    img: "img/gallery/acrylyte.png"
-  }, {
-    img: "img/gallery/corriano.png"
-  }, {
-    img: "img/gallery/stylite.png"
-  }, {
-    img: "img/gallery/decopanel.png"
-  }, {
-    img: "img/gallery/decoris.png"
-  }, {
-    img: "img/gallery/forescolor.png"
-  }, {
-    img: "img/gallery/fashionwall.png"
-  }, {
-    img: "img/gallery/emporio.png"
-  }, {
-    img: "img/gallery/matrixwall.png"
-  }, {
-    img: "img/gallery/solido.png"
-  }, {
-    img: "img/gallery/d3wall.png"
-  }, {
-    img: "img/gallery/europratik.png"
-  }];
+  NavigationService.getAllProducts(function (data) {
+    $scope.brands = data;
+    console.log($scope.brands);
+  });
+  // [{
+  //   img: "img/gallery/decolite.png"
+  // }, {
+  //   img: "img/gallery/lucento.png"
+  // }, {
+  //   img: "img/gallery/mikano.png"
+  // }, {
+  //   img: "img/gallery/vereno.png"
+  // }, {
+  //   img: "img/gallery/acrylam.png"
+  // }, {
+  //   img: "img/gallery/egger.png"
+  // }, {
+  //   img: "img/gallery/flos.png"
+  // }, {
+  //   img: "img/gallery/decoart.png"
+  // }, {
+  //   img: "img/gallery/acrylyte.png"
+  // }, {
+  //   img: "img/gallery/corriano.png"
+  // }, {
+  //   img: "img/gallery/stylite.png"
+  // }, {
+  //   img: "img/gallery/decopanel.png"
+  // }, {
+  //   img: "img/gallery/decoris.png"
+  // }, {
+  //   img: "img/gallery/forescolor.png"
+  // }, {
+  //   img: "img/gallery/fashionwall.png"
+  // }, {
+  //   img: "img/gallery/emporio.png"
+  // }, {
+  //   img: "img/gallery/matrixwall.png"
+  // }, {
+  //   img: "img/gallery/solido.png"
+  // }, {
+  //   img: "img/gallery/d3wall.png"
+  // }, {
+  //   img: "img/gallery/europratik.png"
+  // }];
 })
 
 .controller('GalleryCtrl', function($scope, TemplateService, NavigationService, ngDialog, $timeout) {
@@ -331,7 +336,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   NavigationService.getGallery(function(data) {
     $scope.gallery = data;
     console.log($scope.gallery);
-  });
+  })
 
 
   $scope.open = function(id) {
@@ -398,12 +403,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('CategoryCtrl', function($scope, TemplateService, NavigationService, ngDialog, $timeout) {
+.controller('CategoryCtrl', function($scope, TemplateService, NavigationService, ngDialog, $timeout, $stateParams) {
   $scope.template = TemplateService.changecontent("category");
   $scope.menutitle = NavigationService.makeactive("Category");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  // console.log('id:', $stateParams);
+  // $scope.getCategoryId = function (categoryId) {
+  //   console.log('CategoryId: ', categoryId);
+    NavigationService.getEachCategory($stateParams.id, function (data) {
+      $scope.category = data;
+      console.log('Category: ', $scope.category);
+      console.log('State: ', $stateParams.id);
+    })
 
+    $scope.getSeries = function(code) {
+      console.log('Series 1: ', code);
+      NavigationService.getEachSeries(code, function (data) {
+        $scope.series = data;
+        console.log('Series: ', $scope.series);
+      })
+    }
+  // } 
+  
   //     $scope.molding = [
   //         {
   //             img: "img/acrylyte/sample/8801.jpg",

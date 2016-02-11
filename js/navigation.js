@@ -11,7 +11,8 @@ var navigationservice = angular.module('navigationservice', [])
       classis: "active",
       link: "#/home"
     }]
-  }, {
+  }, 
+  {
     name: "Features",
     active: "",
     link: "#/feature",
@@ -97,6 +98,20 @@ var navigationservice = angular.module('navigationservice', [])
 
     getCategoryImages:function (id, callback) {
       $http.get(adminurl+'getEachPopularProduct/'+id).success(callback);
+    },
+
+    getAllProducts:function (callback) {
+      $http.get(adminurl+'getAllProducts').success(callback);
+    },
+
+    getEachCategory: function (id, callback) {
+      console.log('nsId: ', id);
+      $http.get(adminurl + 'getAllProducts/' + id).success(callback);
+    },
+
+    getEachSeries: function (code, callback) {
+      console.log('Code: ', code);
+      $http.get(adminurl + 'series/' + code).success(callback);
     }
   };
 });

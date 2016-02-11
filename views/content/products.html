@@ -1,16 +1,16 @@
 <div class="container pdt10">
 	<div class="row">
-		<div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="catbrand in catmain">
-			<a href="#/category" ng-if="catbrand.img=='img/gallery/acrylyte.png'">
+		<div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="catbrand in brands">
+			<a href="#/category/{{catbrand.id}}">
 				<div class="img-holder cathold">
-					<img ng-src=" {{catbrand.img}} " alt=" " class="img-responsive">
+					<img ng-src=" {{catbrand.image}} " alt=" " class="img-responsive">
 				</div>
 			</a>
-			<a href="" ng-if="catbrand.img!='img/gallery/acrylyte.png'">
+			<!-- <a href="" ng-if="catbrand.image!='img/gallery/acrylyte.png'">
 				<div class="img-holder cathold">
-					<img ng-src=" {{catbrand.img}} " alt=" " class="img-responsive">
+					<img ng-src="{{catbrand.image}}" ng-click="getCategoryId(catbrand.categoryId)" alt=" " class="img-responsive">
 				</div>
-			</a>
+			</a> -->
 		</div>
 	</div>
 </div>
