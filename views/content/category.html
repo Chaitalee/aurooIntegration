@@ -279,13 +279,16 @@
             <!-- <div class="products-name text-center">
                         <p class="head">Panel</p>
                     </div> -->
-            <div class="series">
-              <div class="name">
+            <div class="series clearfix">
+              <div class="name pull-left">
                 <span class="category-color name">{{category.productName}}</span>
                 <!-- <span ></span> -->
                 <div ng-repeat="s in category.series">
                 <a ng-init="getSeries(category.series[0])" ng-click="getSeries(s)">{{s}}</a>
                 </div>
+              </div>
+              <div class="name pull-right">
+                <a href="" class="category-name" ng-click="feature();">Features</a>
               </div>
             </div>
             <div class="row">
