@@ -1,4 +1,5 @@
 var adminurl = "http://wohlig.io:81/callApi/euro/";
+//var adminurl = "http://localhost/eurobackend/index.php/json/";
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
@@ -11,7 +12,7 @@ var navigationservice = angular.module('navigationservice', [])
       classis: "active",
       link: "#/home"
     }]
-  }, 
+  },
   {
     name: "Features",
     active: "",
@@ -106,7 +107,7 @@ var navigationservice = angular.module('navigationservice', [])
 
     getEachCategory: function (id, callback) {
       console.log('nsId: ', id);
-      $http.get(adminurl + 'getAllProducts/' + id).success(callback);
+      $http.get(adminurl + 'getCategoryById?id=' + id).success(callback);
     },
 
     getEachSeries: function (code, callback) {

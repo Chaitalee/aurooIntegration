@@ -36,36 +36,41 @@ Vile Parle (East), Mumbai 400 057.Maharshtra, India</span>
 </div>
 <div class="get-in-touch">
     <div class="container">
+        <form action="" name="contactForm">
+
+          {{contactForm}}
         <div class="row">
+
             <div class="col-md-6">
-                <form action="">
+
                     <div class="separte">
                         <span>*<label for="name" class="label-control">Name</label></span>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" required class="form-control" id="name">
                     </div>
                     <div class="separte">
                         <span>*<label for="mail" class="label-control">Email</label></span>
-                        <input type="Email" class="form-control" id="mail">
+                        <input type="email" required class="form-control" id="mail">
                     </div>
                     <div class="separte">
                         <span><label for="tel" class="label-control">Telephone</label></span>
-                        <input type="Tel" class="form-control" id="tel">
+                        <input type="text" class="form-control" id="tel">
                     </div>
-                </form>
+
             </div>
             <div class="col-md-6">
-                <form action="">
+
                     <div class="separte">
                         <span>*<label for="comment">comment</label></span>
-                        <textarea name="" id="comment" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="" required id="comment" cols="30" rows="10" class="form-control"></textarea>
                     </div>
-                </form>
+
             </div>
         </div>
-    </div>
-    <div class="submit-btn text-center" ng-click="submit();">
-        <a href="" class="submit button">Sumbit</a>
-    </div>
+        <div class="submit-btn text-center">
+            <a ng-click="submit" class="submit button">Sumbit</a>
+        </div>
+      </form>
+
 </div>
 </div>
 </div>
