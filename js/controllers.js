@@ -177,6 +177,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Contact-Us");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.submitForm = function(formData,formValid) {
+    if(formValid.$valid)
+    {
+      $scope.formComplete = true;
+    }
+    else
+    {
+
+    }
+  };
+
 })
 
 
@@ -531,6 +543,13 @@ $scope.slide = [];
     $scope.showpop = data;
     ngDialog.open({
       template: 'views/content/quickview.html',
+      scope: $scope,
+      controller: 'CategoryCtrl'
+    });
+  };
+    $scope.feature = function() {
+    ngDialog.open({
+      template: 'views/content/featurespop.html',
       scope: $scope,
       controller: 'CategoryCtrl'
     });

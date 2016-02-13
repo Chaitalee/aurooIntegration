@@ -91,7 +91,7 @@ var navigationservice = angular.module('navigationservice', [])
 
     getEachCategory: function (id, callback) {
       console.log('nsId: ', id);
-      $http.get(adminurl + 'getAllProducts/' + id).success(callback);
+      $http.get(adminurl + 'getCategoryById?id=' + id).success(callback);
     },
 
     getEachSeries: function (code, callback) {
