@@ -1,8 +1,19 @@
+<div ng-controller="NavBarCtrl">
 <ul class="nav navbar-nav mgtb text-uppercase">
-  <li><a href="#/home" class="active">home</a></li>
-  <li><a href="#/knowus">know us</a></li>
-  <li><a href="#/products">Products</a></li>
-  <li><a href="#/gallery">gallery</a></li>
-  <li><a href="#/download">download</a></li>
-  <li><a href="#/contactus">contact us</a></li>
+<!-- {{items}} -->
+  <li ng-repeat="item in items" ng-click="getLocation(item.id)" ng-class="{'active': isActive(item.id)}"><a href="{{item.url}}">{{item.title}}</a></li>
+  <!-- <li><a href="#/home" ng-click="getLocation()">home</a></li>
+  <li><a href="#/knowus" ng-click="getLocation()">know us</a></li>
+  <li><a href="#/products" ng-click="getLocation()" >Products</a></li>
+  <li><a href="#/gallery" ng-click="getLocation()" >gallery</a></li>
+  <li><a href="#/download" ng-click="getLocation()" >download</a></li>
+  <li><a href="#/contactus" ng-click="getLocation()" >contact us</a></li> -->
 </ul>
+</div>
+
+<!-- ng-class="{active: $location.path() == '#/home'}"
+ng-class="{active: $location.path() == '#/knowus'}"
+ng-class="{active: $location.path() == '#/products'}"
+ng-class="{active: $location.path() == '#/gallery'}"
+ng-class="{active: $location.path() == '#/download'}"
+ng-class="{active: $location.path() == '#/contactus'}" -->

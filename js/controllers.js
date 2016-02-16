@@ -1,12 +1,13 @@
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'ngDialog', 'angular-flexslider'])
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, ngDialog, $timeout) {
+.controller('HomeCtrl', function($scope, TemplateService, $location, NavigationService, ngDialog, $timeout) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("home");
   $scope.menutitle = NavigationService.makeactive("Home");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.products = false;
+  $.jStorage.set('activeItem', 'item1');
 
   NavigationService.getHomePics(function (data) {
       $scope.homeImage = data;
@@ -71,87 +72,86 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.popme();
 
-    NavigationService.getSlider(function(data) {
-      $scope.slides = data;
-      console.log($scope.slides);
-    });
+  NavigationService.getSlider(function(data) {
+    $scope.slides = data;
+    console.log($scope.slides);
+  });
 
-        NavigationService.getExclusiveProduct(function(data) {
-          $scope.exclusiveProduct = data;
-          console.log($scope.exclusiveProduct);
-        });
+  NavigationService.getExclusiveProduct(function(data) {
+    $scope.exclusiveProduct = data;
+    console.log($scope.exclusiveProduct);
+  });
 
+  // $scope.products = [{
+  //   img: "img/products/8.jpg",
+  //   name: "Zara",
+  //   price: "25000"
+  // }, {
+  //   img: "img/products/7.jpg",
+  //   name: "Zara",
+  //   price: "25000"
+  // }, {
+  //   img: "img/products/5.jpg",
+  //   name: "Zara",
+  //   price: "25000"
+  // }, {
+  //   img: "img/products/4.jpg",
+  //   name: "Zara",
+  //   price: "25000"
+  // }];
 
-  $scope.products = [{
-    img: "img/products/8.jpg",
-    name: "Zara",
-    price: "25000"
-  }, {
-    img: "img/products/7.jpg",
-    name: "Zara",
-    price: "25000"
-  }, {
-    img: "img/products/5.jpg",
-    name: "Zara",
-    price: "25000"
-  }, {
-    img: "img/products/4.jpg",
-    name: "Zara",
-    price: "25000"
-  }];
+  // $scope.brandlist = [{
+  //   back_img: "img/brandlist/acrylamhov.png",
+  //   img: "img/brandlist/acrylam.png",
+  //   show: false,
+  // }, {
+  //   back_img: "img/brandlist/acrylytehov.png",
+  //   img: "img/brandlist/acrylyte.png",
+  //   show: false,
+  //   products: [{
+  //     img: "img/acrylyte/sample/8801.jpg",
+  //     name: "Acrylyte",
+  //     code: "8801",
+  //     size: "1220 x 2440mm x 3mm (T)"
+  //   }, {
+  //     img: "img/acrylyte/sample/8802.jpg",
+  //     name: "Acrylyte",
+  //     code: "8802",
+  //     size: "1220 x 2440mm x 3mm (T)"
+  //   }, {
+  //     img: "img/acrylyte/sample/8803.jpg",
+  //     name: "Acrylyte",
+  //     code: "8803",
+  //     size: "1220 x 2440mm x 3mm (T)"
+  //   }, {
+  //     img: "img/acrylyte/sample/8804.jpg",
+  //     name: "Acrylyte",
+  //     code: "8804",
+  //     size: "1220 x 2440mm x 3mm (T)"
+  //   }]
+  // }, {
+  //   back_img: "img/brandlist/corrianohov.png",
+  //   img: "img/brandlist/corriano.png",
+  //   show: false,
+  // }];
 
-  $scope.brandlist = [{
-    back_img: "img/brandlist/acrylamhov.png",
-    img: "img/brandlist/acrylam.png",
-    show: false,
-  }, {
-    back_img: "img/brandlist/acrylytehov.png",
-    img: "img/brandlist/acrylyte.png",
-    show: false,
-    products: [{
-      img: "img/acrylyte/sample/8801.jpg",
-      name: "Acrylyte",
-      code: "8801",
-      size: "1220 x 2440mm x 3mm (T)"
-    }, {
-      img: "img/acrylyte/sample/8802.jpg",
-      name: "Acrylyte",
-      code: "8802",
-      size: "1220 x 2440mm x 3mm (T)"
-    }, {
-      img: "img/acrylyte/sample/8803.jpg",
-      name: "Acrylyte",
-      code: "8803",
-      size: "1220 x 2440mm x 3mm (T)"
-    }, {
-      img: "img/acrylyte/sample/8804.jpg",
-      name: "Acrylyte",
-      code: "8804",
-      size: "1220 x 2440mm x 3mm (T)"
-    }]
-  }, {
-    back_img: "img/brandlist/corrianohov.png",
-    img: "img/brandlist/corriano.png",
-    show: false,
-  }];
-
-  $scope.producthov = [{
-    img: "img/products/8.jpg",
-    name: "Zara",
-    price: "25000"
-  }, {
-    img: "img/products/7.jpg",
-    name: "Zara",
-    price: "25000"
-  }, {
-    img: "img/products/6.jpg",
-    name: "Zara",
-    price: "25000"
-  }, {
-    img: "img/products/5.jpg",
-    name: "Zara",
-    price: "25000"
-  }];
+  // $scope.producthov = [{
+  //   img: "img/products/8.jpg",
+  //   name: "Zara",
+  //   price: "25000"
+  // }, {
+  //   img: "img/products/7.jpg",
+  //   name: "Zara",
+  //   price: "25000"
+  // }, {
+  //   img: "img/products/6.jpg",
+  //   name: "Zara",
+  //   price: "25000"
+  // }, {
+  //   img: "img/products/5.jpg",
+  //   name: "Zara",
+  //   price: "25000"
+  // }];
 
   $scope.prosee = false;
 
@@ -169,7 +169,59 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.brandlist[index].show = !$scope.brandlist[index].show;
     }
   };
+})
 
+.controller('NavBarCtrl', function($scope) {
+  // $scope.states = {};
+  // $scope.states.activeItem = 'item1';
+  $scope.items = [{
+      id: 'item1',
+      title: 'Home',
+      url: '#/home'
+
+  }, {
+      id: 'item2',
+      title: 'Know Us',
+      url: '#/knowus'
+  }, {
+      id: 'item3',
+      title: 'Products',
+      url: "#/products"
+  },
+  {
+      id: 'item4',
+      title: 'Gallery',
+      url: "#/gallery"
+  },
+  {
+      id: 'item5',
+      title: 'Download',
+      url: "#/download"
+  },
+  {
+      id: 'item6',
+      title: 'Contact Us',
+      url: "#/contactus"
+  }];
+  // console.log('activeItem: ', $scope.states.activeItem);
+  $scope.getLocation = function(id) {
+    $.jStorage.set('activeItem', id);
+    console.log('activeItem: ', $.jStorage.get('activeItem'));
+    // $scope.location = $location;
+    // console.log('location', $scope.location)
+    // console.log('path', $location.url())
+    // console.log('location1', $location)
+    // $scope.exclusiveProduct = data;
+    // console.log($scope.exclusiveProduct);
+  };
+  $scope.isActive = function (id) {
+    console.log('Testing item: ', $.jStorage.get('activeItem'))
+    console.log('Testing item2: ', id)
+    console.log("We're in the is active function!")
+    if($.jStorage.get('activeItem') == id)
+      return true
+    return false
+  }
 })
 
 .controller('ContactUsCtrl', function($scope, TemplateService, NavigationService, $timeout) {

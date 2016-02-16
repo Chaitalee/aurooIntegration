@@ -65,6 +65,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         url: "/galleryimage",
         templateUrl: "views/template.html",
         controller: 'GalleryimageCtrl'
+    })
+    .state('navBar', {
+        templateUrl: "views/menu.html",
+        controller: 'NavBarCtrl'
     });
 
     $urlRouterProvider.otherwise("/home");
