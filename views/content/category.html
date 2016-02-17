@@ -284,7 +284,7 @@
                 <span class="category-color name">{{category.productName}}</span>
                 <!-- <span ></span> -->
                 <div ng-repeat="s in category.series">
-                <a ng-init="getSeries(category.series[0])" ng-click="getSeries(s)">{{s}}</a>
+                <a ui-sref="category({id: category.id, code: s})">{{s}}</a>
                 </div>
               </div>
               <div class="name pull-right">

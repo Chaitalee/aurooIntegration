@@ -83,14 +83,7 @@ var navigationservice = angular.module('navigationservice', [])
 
     subscribe: function (mail, callback) {
       console.log(mail);
-      $http({
-        url: adminurl + 'getSubscribers',
-        method: 'POST',
-        withCredentials: true,
-        data: {
-          "email": mail
-        }
-      }).success(callback);
+      $http.get(adminurl + 'getSubscribers?email='+ mail).success(callback);
     },
 
     getPopularPdts:function (callback) {
@@ -98,7 +91,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     getCategoryImages:function (id, callback) {
-      $http.get(adminurl+'getEachPopularProduct/'+id).success(callback);
+      $http.get(adminurl+'getEachPopularProduct?id='+id).success(callback);
     },
 
     getAllProducts:function (callback) {
@@ -110,9 +103,14 @@ var navigationservice = angular.module('navigationservice', [])
       $http.get(adminurl + 'getCategoryById?id=' + id).success(callback);
     },
 
-    getEachSeries: function (code, callback) {
-      console.log('Code: ', code);
-      $http.get(adminurl + 'series/' + code).success(callback);
+    // getAllSeries: function (code, callback) {
+    //   $http.get(adminurl + 'getAllSeries?category=' + code).success(callback);
+    // },
+
+    getEachSeries: function (id, code, callback) {
+      console.log('Code: ', id);
+      console.log('Code: ', id);
+      $http.get(adminurl + 'category?id=' + id + '/series?code=' + code).success(callback);
     }
   };
 });

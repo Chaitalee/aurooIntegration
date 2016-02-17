@@ -28,10 +28,12 @@
             <div class="col-md-6">
                 <div class="msg-me">
                     <p class="italic font-italic">Join for our latest update</p>
-                    <form action="" class="form-inline">
+                    <form name="subForm" class="form-inline">
                         <div class="nomgpd form-group">
-                            <input type="text" class="form-control nofocus noborder mail" placeholder="Your email here.." ng-model="subscribeEmail">
-                            <button type="submit" ng-click="subscribe(subscribeEmail)" class="subscribe nofocus">subscribe</button>
+                            <input type="email" name="email" class="form-control nofocus noborder mail" placeholder="Your email here.." ng-model="subscribeEmail">
+                            <div ng-show="subForm.email.$invalid">Please Enter A Valid Email Id</div>
+                            <button ng-click="subscribe(subscribeEmail)" class="subscribe nofocus">subscribe</button>
+                        </div>
                     </form>
                     </div>
                 </div>
@@ -192,7 +194,7 @@
                 </div>
             </div>
             <div class="range">
-                <a href="#/category/{{brand.id}}" class="">{{brand.categoryId}}full range</a>
+                <a href="#/category/{{brand.id}}/series/{{brand.series[0]}}" class="">{{brand.categoryId}}full range</a>
             </div>
         </div>
     </div>

@@ -16,59 +16,75 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
     .state('home', {
         url: "/home",
         templateUrl: "views/template.html",
-        controller: 'HomeCtrl'
+        controller: 'HomeCtrl',
+        params: {activeItem: 'item1'}
     })
 
-    .state('contactus', {
-        url: "/contactus",
-        templateUrl: "views/template.html",
-        controller: 'ContactUsCtrl'
-    })
-    .state('category', {
-        url: "/category/:id",
-        templateUrl: "views/template.html",
-        controller: 'CategoryCtrl'
-    })
     .state('knowus', {
         url: "/knowus",
         templateUrl: "views/template.html",
-        controller: 'KnowusCtrl'
+        controller: 'KnowusCtrl',
+        params: {activeItem: 'item2'}
+    })
+
+    .state('products', {
+        url: "/products",
+        templateUrl: "views/template.html",
+        controller: 'ProductsCtrl',
+        params: {activeItem: 'item3'}
+    })
+
+    .state('gallery', {
+        url: "/gallery",
+        templateUrl: "views/template.html",
+        controller: 'GalleryCtrl',
+        params: {activeItem: 'item4'}
     })
 
     .state('download', {
         url: "/download",
         templateUrl: "views/template.html",
-        controller: 'DownloadCtrl'
+        controller: 'DownloadCtrl',
+        params: {activeItem: 'item5'}
     })
+
+    .state('contactus', {
+        url: "/contactus",
+        templateUrl: "views/template.html",
+        controller: 'ContactUsCtrl',
+        params: {activeItem: 'item6'}
+
+    })
+
+    .state('category', {
+        url: "/category/:id/series/:code",
+        templateUrl: "views/template.html",
+        controller: 'CategoryCtrl'
+    })
+
+    // .state('series', {
+    //     url: "/category/:id/",
+    //     templateUrl: "views/template.html",
+    //     controller: 'SeriesCtrl'
+    // })
 
     .state('brands', {
         url: "/brands",
         templateUrl: "views/template.html",
         controller: 'BrandsCtrl'
     })
+    
     .state('quickview', {
         url: "/quickview",
         templateUrl: "views/template.html",
         controller: 'QuickviewCtrl'
     })
-    .state('products', {
-        url: "/products",
-        templateUrl: "views/template.html",
-        controller: 'ProductsCtrl'
-    })
-    .state('gallery', {
-        url: "/gallery",
-        templateUrl: "views/template.html",
-        controller: 'GalleryCtrl'
-    })
+    
+    
     .state('galleryimage', {
         url: "/galleryimage",
         templateUrl: "views/template.html",
         controller: 'GalleryimageCtrl'
-    })
-    .state('navBar', {
-        templateUrl: "views/menu.html",
-        controller: 'NavBarCtrl'
     });
 
     $urlRouterProvider.otherwise("/home");

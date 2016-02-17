@@ -1,5 +1,4 @@
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'ngDialog', 'angular-flexslider'])
-
 .controller('HomeCtrl', function($scope, TemplateService, $location, NavigationService, ngDialog, $timeout) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("home");
@@ -7,7 +6,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.products = false;
-  $.jStorage.set('activeItem', 'item1');
+  // $.jStorage.set('activeItem', 'item1');
 
   NavigationService.getHomePics(function (data) {
       $scope.homeImage = data;
@@ -63,14 +62,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   };
 
+  // $.jStorage.set('popNot', undefined)
+  console.log('popNot value: ', $.jStorage.get('popNot'))
+  popNot = $.jStorage.get('popNot');
   $scope.popme = function() {
-      ngDialog.open({
-        template: 'views/content/popup.html',
-        scope: $scope
-      });
+    ngDialog.open({
+      template: 'views/content/popup.html',
+      scope: $scope
+    });
   };
 
-  $scope.popme();
+  $scope.close = function () {
+    $.jStorage.set('popNot', true)
+    console.log('popNot value: ', $.jStorage.get('popNot'))
+  }
+
+  if(!popNot) {
+    $scope.popme();
+  }
 
   NavigationService.getSlider(function(data) {
     $scope.slides = data;
@@ -171,7 +180,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 })
 
-.controller('NavBarCtrl', function($scope) {
+.controller('NavBarCtrl', function($scope, $stateParams) {
   // $scope.states = {};
   // $scope.states.activeItem = 'item1';
   $scope.items = [{
@@ -205,8 +214,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   }];
   // console.log('activeItem: ', $scope.states.activeItem);
   $scope.getLocation = function(id) {
-    $.jStorage.set('activeItem', id);
-    console.log('activeItem: ', $.jStorage.get('activeItem'));
+    // $.jStorage.set('activeItem', id);
+    console.log('activeItem: ', $stateParams.activeItem);
     // $scope.location = $location;
     // console.log('location', $scope.location)
     // console.log('path', $location.url())
@@ -215,10 +224,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // console.log($scope.exclusiveProduct);
   };
   $scope.isActive = function (id) {
-    console.log('Testing item: ', $.jStorage.get('activeItem'))
+    console.log('Testing item: ', $stateParams.activeItem)
     console.log('Testing item2: ', id)
     console.log("We're in the is active function!")
-    if($.jStorage.get('activeItem') == id)
+    if($stateParams.activeItem == id)
       return true
     return false
   }
@@ -471,19 +480,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   // console.log('id:', $stateParams);
   // $scope.getCategoryId = function (categoryId) {
   //   console.log('CategoryId: ', categoryId);
-    NavigationService.getEachCategory($stateParams.id, function (data) {
-      $scope.category = data;
-      console.log('Category: ', $scope.category);
-      console.log('State: ', $stateParams.id);
-    })
+  NavigationService.getEachCategory($stateParams.id, function (data) {
+    $scope.category = data;
+    console.log('Category: ', $scope.category);
+    console.log('State: ', $stateParams.id);
+  })
 
-    $scope.getSeries = function(code) {
-      console.log('Series 1: ', code);
-      NavigationService.getEachSeries(code, function (data) {
-        $scope.series = data;
-        console.log('Series: ', $scope.series);
-      })
-    }
+  NavigationService.getEachSeries($stateParams.id, $stateParams.code, function (data) {
+    $scope.series = data;
+    console.log('Series: ', $scope.series);
+  })
   // } 
   
   //     $scope.molding = [
@@ -520,87 +526,87 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   //
   // ];
 
-  $scope.panel = [{
-    img: "img/acrylyte/sample/8801.jpg",
-    name: "Acrylyte",
-    code: "8801",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8802.jpg",
-    name: "Acrylyte",
-    code: "8802",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8803.jpg",
-    name: "Acrylyte",
-    code: "8803",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8804.jpg",
-    name: "Acrylyte",
-    code: "8804",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8805.jpg",
-    name: "Acrylyte",
-    code: "8805",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8806.jpg",
-    name: "Acrylyte",
-    code: "8806",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8807.jpg",
-    name: "Acrylyte",
-    code: "8807",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8808.jpg",
-    name: "Acrylyte",
-    code: "8808",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8809.jpg",
-    name: "Acrylyte",
-    code: "8809",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8810.jpg",
-    name: "Acrylyte",
-    code: "8810",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8811.jpg",
-    name: "Acrylyte",
-    code: "8811",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8812.jpg",
-    name: "Acrylyte",
-    code: "8812",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8813.jpg",
-    name: "Acrylyte",
-    code: "8813",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8814.jpg",
-    name: "Acrylyte",
-    code: "8814",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8815.jpg",
-    name: "Acrylyte",
-    code: "8815",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, {
-    img: "img/acrylyte/sample/8816.jpg",
-    name: "Acrylyte",
-    code: "8816",
-    size: "1220 x 2440mm x 3mm (T)"
-  }, ];
+  // $scope.panel = [{
+  //   img: "img/acrylyte/sample/8801.jpg",
+  //   name: "Acrylyte",
+  //   code: "8801",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8802.jpg",
+  //   name: "Acrylyte",
+  //   code: "8802",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8803.jpg",
+  //   name: "Acrylyte",
+  //   code: "8803",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8804.jpg",
+  //   name: "Acrylyte",
+  //   code: "8804",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8805.jpg",
+  //   name: "Acrylyte",
+  //   code: "8805",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8806.jpg",
+  //   name: "Acrylyte",
+  //   code: "8806",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8807.jpg",
+  //   name: "Acrylyte",
+  //   code: "8807",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8808.jpg",
+  //   name: "Acrylyte",
+  //   code: "8808",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8809.jpg",
+  //   name: "Acrylyte",
+  //   code: "8809",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8810.jpg",
+  //   name: "Acrylyte",
+  //   code: "8810",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8811.jpg",
+  //   name: "Acrylyte",
+  //   code: "8811",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8812.jpg",
+  //   name: "Acrylyte",
+  //   code: "8812",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8813.jpg",
+  //   name: "Acrylyte",
+  //   code: "8813",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8814.jpg",
+  //   name: "Acrylyte",
+  //   code: "8814",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8815.jpg",
+  //   name: "Acrylyte",
+  //   code: "8815",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, {
+  //   img: "img/acrylyte/sample/8816.jpg",
+  //   name: "Acrylyte",
+  //   code: "8816",
+  //   size: "1220 x 2440mm x 3mm (T)"
+  // }, ];
   $scope.oneAtATime = true;
   $scope.open = function(data) {
     $scope.showpop = data;
@@ -619,6 +625,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 
 })
+
+// .controller('SeriesCtrl', function($scope, $stateParams, NavigationService) {
+//   // $scope.template = TemplateService.changecontent("series");
+//   // $scope.menutitle = NavigationService.makeactive("Series");
+//   // TemplateService.title = $scope.menutitle;
+//   // $scope.navigation = NavigationService.getnav();
+//   console.log('series: ', $stateParams.id, $stateParams.code);
+  
+
+// })
 
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
