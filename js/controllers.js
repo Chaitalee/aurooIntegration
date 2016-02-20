@@ -10,12 +10,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   NavigationService.getHomePics(function (data) {
       $scope.homeImage = data;
-      console.log($scope.homeImage);
+      // console.log($scope.homeImage);
     });
 
   NavigationService.getPopularPdts(function (data) {
     $scope.brandlist = data;
-    console.log($scope.brandlist);
+    // console.log($scope.brandlist);
   })
 
   // $scope.subscribe = function (email) {
@@ -26,11 +26,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   //   return email;
   // };
   $scope.getCategory = function (brandId) {
-    console.log('Brand Id:', brandId);
+    // console.log('Brand Id:', brandId);
     NavigationService.getCategoryImages(brandId, function (data) {
       if(data) {
-        console.log('nav service:', brandId);
-        console.log('nav service:', data);
+        // console.log('nav service:', brandId);
+        // console.log('nav service:', data);
         $scope.products = data;
       }
     })
@@ -38,10 +38,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.subscribeEmail = "";
   $scope.subscribe = function (email) {
-    console.log('Email subscribe: ', email);
+    // console.log('Email subscribe: ', email);
     NavigationService.subscribe(email, function (data) {
       // console.log(data);
-      console.log(email);
+      // console.log(email);
     })
     // $scope.subscribeEmail = data;
   }
@@ -63,7 +63,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 
   // $.jStorage.set('popNot', undefined)
-  console.log('popNot value: ', $.jStorage.get('popNot'))
+  // console.log('popNot value: ', $.jStorage.get('popNot'))
   popNot = $.jStorage.get('popNot');
   $scope.popme = function() {
     ngDialog.open({
@@ -74,7 +74,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.close = function () {
     $.jStorage.set('popNot', true)
-    console.log('popNot value: ', $.jStorage.get('popNot'))
+    // console.log('popNot value: ', $.jStorage.get('popNot'))
   }
 
   if(!popNot) {
@@ -83,12 +83,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   NavigationService.getSlider(function(data) {
     $scope.slides = data;
-    console.log($scope.slides);
+    // console.log('slider: ', $scope.slides);
   });
 
   NavigationService.getExclusiveProduct(function(data) {
     $scope.exclusiveProduct = data;
-    console.log($scope.exclusiveProduct);
+    // console.log($scope.exclusiveProduct);
   });
 
   // $scope.products = [{
@@ -165,7 +165,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.prosee = false;
 
   $scope.proclick = function(index) {
-    console.log(index);
+    // console.log(index);
     // for(var i=0;i<$scope.brandlist.length;i++){
     //     if(i==index){
     //         $scope.brandlist[i].show=true;
@@ -215,7 +215,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   // console.log('activeItem: ', $scope.states.activeItem);
   $scope.getLocation = function(id) {
     // $.jStorage.set('activeItem', id);
-    console.log('activeItem: ', $stateParams.activeItem);
+    // console.log('activeItem: ', $stateParams.activeItem);
     // $scope.location = $location;
     // console.log('location', $scope.location)
     // console.log('path', $location.url())
@@ -224,9 +224,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // console.log($scope.exclusiveProduct);
   };
   $scope.isActive = function (id) {
-    console.log('Testing item: ', $stateParams.activeItem)
-    console.log('Testing item2: ', id)
-    console.log("We're in the is active function!")
+    // console.log('Testing item: ', $stateParams.activeItem)
+    // console.log('Testing item2: ', id)
+    // console.log("We're in the is active function!")
     if($stateParams.activeItem == id)
       return true
     return false
@@ -245,7 +245,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.formComplete = true;
       NavigationService.contactSubmit(function(data){
         $scope.contact=data;
-        console.log($scope.contact);
+        // console.log($scope.contact);
       });
     }
     else
@@ -261,9 +261,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Download");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  
   NavigationService.getGallery(function(data) {
     $scope.download = data;
-    console.log($scope.download);
+    // console.log($scope.download);
   });
   // $scope.download = [{
   //   img: "img/gallery/decolite.png",
@@ -352,7 +353,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   NavigationService.getAllProducts(function (data) {
     $scope.brands = data;
-    console.log($scope.brands);
+    // console.log($scope.brands);
   });
   // [{
   //   img: "img/gallery/decolite.png"
@@ -405,14 +406,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.slide = [];
   NavigationService.getGallery(function(data) {
     $scope.gallery = data;
-    console.log($scope.gallery);
+    // console.log($scope.gallery);
   })
 
 
   $scope.open = function(id) {
     NavigationService.getEachProductGallery(id, function(data) {
       $scope.eachprogallery = data;
-      console.log($scope.eachprogallery);
+      // console.log($scope.eachprogallery);
     });
     ngDialog.open({
       template: 'views/content/galleryimage.html',
@@ -482,13 +483,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   //   console.log('CategoryId: ', categoryId);
   NavigationService.getEachCategory($stateParams.id, function (data) {
     $scope.category = data;
-    console.log('Category: ', $scope.category);
-    console.log('State: ', $stateParams.id);
+    // console.log('Category: ', $scope.category);
+    // console.log('State: ', $stateParams.id);
   })
 
   NavigationService.getEachSeries($stateParams.id, $stateParams.code, function (data) {
     $scope.series = data;
-    console.log('Series: ', $scope.series);
+    // console.log('Series: ', $scope.series);
   })
   // } 
   

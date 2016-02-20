@@ -96,8 +96,9 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
 firstapp.filter('serverimage', function() {
   return function(input) {
     if (input) {
-      return input;
-      // return  "http://wohlig.co.in/newfynx/uploads/" + input;
+      // console.log('serverimage: ', input);
+      // return input;
+      return  "http://vinod.io/eurobackend/uploads/" + input;
     } else {
       return "img/logo.png";
     }

@@ -1,4 +1,4 @@
-var adminurl = "http://wohlig.io:81/callApi/euro/";
+var adminurl = "http://192.168.0.123/eurobackend/index.php/json/";
 //var adminurl = "http://localhost/eurobackend/index.php/json/";
 var navigationservice = angular.module('navigationservice', [])
 
@@ -38,7 +38,7 @@ var navigationservice = angular.module('navigationservice', [])
       $http.get(adminurl + 'getEachPopularProduct/'+ id).success(callback);
     },
     getEachProductGallery: function(id,callback) {
-      console.log(id);
+      // console.log(id);
       $http.get(adminurl + 'getEachProductGallery/'+id).success(callback);
     },
     contactSubmit:function(mail,callback){
@@ -82,7 +82,7 @@ var navigationservice = angular.module('navigationservice', [])
     },
 
     subscribe: function (mail, callback) {
-      console.log(mail);
+      // console.log(mail);
       $http.get(adminurl + 'getSubscribers?email='+ mail).success(callback);
     },
 
@@ -96,10 +96,11 @@ var navigationservice = angular.module('navigationservice', [])
 
     getAllProducts:function (callback) {
       $http.get(adminurl+'getAllProducts').success(callback);
+      //$http.get('http://amit.io/selfbackend/index.php/json/getCategory').success(callback);
     },
 
     getEachCategory: function (id, callback) {
-      console.log('nsId: ', id);
+      // console.log('nsId: ', id);
       $http.get(adminurl + 'getCategoryById?id=' + id).success(callback);
     },
 
@@ -108,8 +109,8 @@ var navigationservice = angular.module('navigationservice', [])
     // },
 
     getEachSeries: function (id, code, callback) {
-      console.log('Code: ', id);
-      console.log('Code: ', id);
+      // console.log('Code: ', id);
+      // console.log('Code: ', id);
       $http.get(adminurl + 'category?id=' + id + '/series?code=' + code).success(callback);
     }
   };
